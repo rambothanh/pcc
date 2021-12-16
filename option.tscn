@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://option.gd" type="Script" id=1]
+
+[node name="Option" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 514.0
+size_flags_vertical = 3
+
+[node name="Items" type="VBoxContainer" parent="Scroll"]
+margin_right = 1024.0
+margin_bottom = 514.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Colors" type="HBoxContainer" parent="."]
+margin_top = 518.0
+margin_right = 1024.0
+margin_bottom = 600.0
+alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Colors"]
+margin_left = 412.0
+margin_right = 476.0
+margin_bottom = 82.0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Colors/VBox"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Colors/VBox"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 82.0
+text = "Color 1"
+align = 1
+
+[node name="VBox2" type="VBoxContainer" parent="Colors"]
+margin_left = 480.0
+margin_right = 544.0
+margin_bottom = 82.0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Colors/VBox2"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Colors/VBox2"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 82.0
+text = "Color 2"
+align = 1
+
+[node name="VBox3" type="VBoxContainer" parent="Colors"]
+margin_left = 548.0
+margin_right = 612.0
+margin_bottom = 82.0
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Colors/VBox3"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Colors/VBox3"]
+margin_top = 68.0
+margin_right = 64.0
+margin_bottom = 82.0
+text = "Color 3"
+align = 1
+
+[connection signal="color_changed" from="Colors/VBox/ColorPickerButton" to="." method="_on_color_changed" binds= [ 0 ]]
+[connection signal="color_changed" from="Colors/VBox2/ColorPickerButton" to="." method="_on_color_changed" binds= [ 1 ]]
+[connection signal="color_changed" from="Colors/VBox3/ColorPickerButton" to="." method="_on_color_changed" binds= [ 2 ]]

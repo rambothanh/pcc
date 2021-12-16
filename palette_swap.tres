@@ -1,0 +1,73 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 original_0_0: hint_color;
+uniform vec4 original_0_1: hint_color;
+uniform vec4 original_0_2: hint_color;
+uniform vec4 original_0_3: hint_color;
+uniform vec4 original_0_4: hint_color;
+uniform vec4 original_1_0: hint_color;
+uniform vec4 original_1_1: hint_color;
+uniform vec4 original_1_2: hint_color;
+uniform vec4 original_1_3: hint_color;
+uniform vec4 original_1_4: hint_color;
+uniform vec4 original_2_0: hint_color;
+uniform vec4 original_2_1: hint_color;
+uniform vec4 original_2_2: hint_color;
+uniform vec4 original_2_3: hint_color;
+uniform vec4 original_2_4: hint_color;
+uniform vec4 replace_0_0: hint_color;
+uniform vec4 replace_0_1: hint_color;
+uniform vec4 replace_0_2: hint_color;
+uniform vec4 replace_0_3: hint_color;
+uniform vec4 replace_0_4: hint_color;
+uniform vec4 replace_1_0: hint_color;
+uniform vec4 replace_1_1: hint_color;
+uniform vec4 replace_1_2: hint_color;
+uniform vec4 replace_1_3: hint_color;
+uniform vec4 replace_1_4: hint_color;
+uniform vec4 replace_2_0: hint_color;
+uniform vec4 replace_2_1: hint_color;
+uniform vec4 replace_2_2: hint_color;
+uniform vec4 replace_2_3: hint_color;
+uniform vec4 replace_2_4: hint_color;
+
+const float precision = 0.1;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	if (distance(color, original_0_0) <= precision){
+		color = replace_0_0;
+	} else if (distance(color, original_0_1) <= precision){
+		color = replace_0_1;
+	} else if (distance(color, original_0_2) <= precision){
+		color = replace_0_2;
+	} else if (distance(color, original_0_3) <= precision){
+		color = replace_0_3;
+	} else if (distance(color, original_0_4) <= precision){
+		color = replace_0_4;
+	} else if (distance(color, original_1_0) <= precision){
+		color = replace_1_0;
+	} else if (distance(color, original_1_1) <= precision){
+		color = replace_1_1;
+	} else if (distance(color, original_1_2) <= precision){
+		color = replace_1_2;
+	} else if (distance(color, original_1_3) <= precision){
+		color = replace_1_3;
+	} else if (distance(color, original_1_4) <= precision){
+		color = replace_1_4;
+	} else if (distance(color, original_2_0) <= precision){
+		color = replace_2_0;
+	} else if (distance(color, original_2_1) <= precision){
+		color = replace_2_1;
+	} else if (distance(color, original_2_2) <= precision){
+		color = replace_2_2;
+	} else if (distance(color, original_2_3) <= precision){
+		color = replace_2_3;
+	} else if (distance(color, original_2_4) <= precision){
+		color = replace_2_4;
+	}
+	COLOR = color;
+}"
