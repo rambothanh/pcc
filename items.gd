@@ -6,7 +6,7 @@ extends ScrollContainer
 var group := ButtonGroup.new()
 
 
-func make_items(part_path: String, base_path: String) -> void:
+func make_items(part_path: String, base_path: String) -> Array:
 	%None.button_group = group
 	var dir := DirAccess.open(base_path + part_path)
 	dir.list_dir_begin()
@@ -20,3 +20,10 @@ func make_items(part_path: String, base_path: String) -> void:
 		file_name = dir.get_next()
 	dir.list_dir_end()
 	hide()
+	return $VBox.get_children()
+
+
+func get_items() -> Array:
+	var arr := $VBox.get_children()
+	arr.remove_at(0)
+	return arr
