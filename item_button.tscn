@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://pv0f2wj26owu"]
+
+[ext_resource type="Script" path="res://item_button.gd" id="1_vmta8"]
+
+[node name="ItemButton" type="Button"]
+custom_minimum_size = Vector2(0, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+expand_icon = true
+script = ExtResource("1_vmta8")
