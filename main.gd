@@ -41,6 +41,7 @@ const PARTS := [
 	"hair_base",
 	"eye_left",
 	"eye_right",
+	"glasses",
 	"ear",
 	"leg_right",
 	"skirt",
@@ -56,9 +57,10 @@ const STARTING_ITEMS := {
 	"hair_base": "full",
 	"eye_left": "medium",
 	"eye_right": "medium",
+	"glasses": "None",
 	"ear": "human",
 	"leg_right": "tights",
-	"skirt": "short",
+	"skirt": "None",
 	"arm_right": "long",
 	"hair_front": "bangs",
 }
@@ -98,6 +100,7 @@ func _ready() -> void:
 				item.pressed.connect(on_none_pressed.bind(p))
 			else:
 				item.pressed.connect(on_item_pressed.bind(p, item.texture))
+		set_part_from_text(part, STARTING_ITEMS[part])
 	for child in %Colors.get_children():
 		if not child is HBoxContainer:
 			break
@@ -134,9 +137,16 @@ func on_none_pressed(i: int) -> void:
 
 
 func set_part_from_text(part: String, item: String) -> void:
-	for child in %PartItems.get_child(PARTS.find(part)).get_items():
-		if child.item_name == item:
-			on_item_pressed(PARTS.find(part), child.texture)
+	if item == "None":
+		%PartItems.get_child(PARTS.find(part)).get_none().button_pressed = true
+		on_none_pressed(PARTS.find(part))
+	else:
+		for child in %PartItems.get_child(PARTS.find(part)).get_items():
+			if child.item_name == item:
+				child.button_pressed = true
+				on_item_pressed(PARTS.find(part), child.texture)
+				return
+		%PartItems.get_child(PARTS.find(part)).get_none().button_pressed = true
 
 
 func on_color_changed(color: Color, param: String) -> void:

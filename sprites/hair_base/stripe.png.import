@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2lple4gtuyyp"
-path="res://.godot/imported/tights.png-90152bdd8c748a7be8d6f20badfb4fc6.ctex"
+uid="uid://b20m43gvvlaie"
+path="res://.godot/imported/stripe.png-47c1abd00561238d229d2bea2feab3df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/leg_left/tights.png"
-dest_files=["res://.godot/imported/tights.png-90152bdd8c748a7be8d6f20badfb4fc6.ctex"]
+source_file="res://sprites/hair_base/stripe.png"
+dest_files=["res://.godot/imported/stripe.png-47c1abd00561238d229d2bea2feab3df.ctex"]
 
 [params]
 

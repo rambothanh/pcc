@@ -27,3 +27,7 @@ func get_items() -> Array:
 	var arr := $VBox.get_children()
 	arr.remove_at(0)
 	return arr
+
+
+func get_none() -> Button:
+	return %None
