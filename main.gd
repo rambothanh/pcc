@@ -253,3 +253,46 @@ func get_spritesheet(to_export: Array) -> Image:
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	export_spritesheet_desktop(path)
+
+
+func _on_save_pressed() -> void:
+	SaveLoad.show_save_load(true)
+
+
+func put_data(config: ConfigFile) -> void:
+	for c in get_tree().get_nodes_in_group("color"):
+		config.set_value("color", c.name, c.color)
+	for child in %Sprites.get_children():
+		config.set_value("texture", child.name, child.texture.resource_path)
+	config.set_value("metadata", "thumbnail", $SVC/SV.get_texture().get_image())
+	
+
+func load_save(path: String) -> void:
+	var config := ConfigFile.new()
+	config.load(path)
+	for c in get_tree().get_nodes_in_group("color"):
+		c.color = config.get_value("color", c.name)
+		on_color_changed(c.color, c.name)
+	for child in %PartItems.get_children():
+		var t: Texture = load(config.get_value("texture", %Sprites.get_child(child.get_index()).name))
+		var found_match := false
+		for button in child.get_items():
+			if button.texture == t:
+				button.button_pressed = true
+				found_match = true
+				on_item_pressed(child.get_index(), button.texture)
+				break
+		if not found_match:
+			child.get_none().button_pressed = true
+			on_none_pressed(child.get_index())
+
+
+func _on_random_pressed() -> void:
+	for c in get_tree().get_nodes_in_group("color"):
+		c.color = Color(randf(), randf(), randf(), 1.0)
+		on_color_changed(c.color, c.name)
+	for child in %Sprites.get_children():
+		var items: Array = %PartItems.get_child(child.get_index()).get_items()
+		var item: Button = items.pick_random()
+		item.button_pressed = true
+		on_item_pressed(child.get_index(), item.texture)

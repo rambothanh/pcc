@@ -2232,9 +2232,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/Right/Scroll/Colors/HBoxContainer8"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Skin"
+text = "Outline"
 
-[node name="outline" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer8"]
+[node name="outline" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer8" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(0.133333, 0.109804, 0.101961, 1)
@@ -2247,7 +2247,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Skin"
 
-[node name="skin" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer"]
+[node name="skin" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(0.913725, 0.709804, 0.639216, 1)
@@ -2260,7 +2260,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Iris"
 
-[node name="iris" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer2"]
+[node name="iris" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer2" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(0.141176, 0.623529, 0.870588, 1)
@@ -2273,7 +2273,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Sclera"
 
-[node name="sclera" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer3"]
+[node name="sclera" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer3" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
@@ -2286,7 +2286,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Hair"
 
-[node name="hair" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer4"]
+[node name="hair" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer4" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(0.34902, 0.756863, 0.207843, 1)
@@ -2299,7 +2299,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Primary"
 
-[node name="pri" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer5"]
+[node name="pri" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer5" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(0.47451, 0.403922, 0.333333, 1)
@@ -2312,7 +2312,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Secondary"
 
-[node name="sec" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer6"]
+[node name="sec" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer6" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(1, 0.835294, 0.254902, 1)
@@ -2325,7 +2325,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Tertiary"
 
-[node name="ter" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer7"]
+[node name="ter" type="ColorPickerButton" parent="UI/Right/Scroll/Colors/HBoxContainer7" groups=["color"]]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 color = Color(0.572549, 0.862745, 0.729412, 1)
@@ -2333,6 +2333,14 @@ color = Color(0.572549, 0.862745, 0.729412, 1)
 [node name="Export" type="Button" parent="UI/Right/Scroll/Colors"]
 layout_mode = 2
 text = "Export Spritesheet"
+
+[node name="Save" type="Button" parent="UI/Right/Scroll/Colors"]
+layout_mode = 2
+text = "Save / Load"
+
+[node name="Random" type="Button" parent="UI/Right/Scroll/Colors"]
+layout_mode = 2
+text = "Random"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../SVC/SV/Sprites")
@@ -2382,5 +2390,7 @@ text = "Generating spritesheet..."
 [connection signal="item_selected" from="UI/Left/Scroll/VBox/Animation" to="." method="_on_animation_item_selected"]
 [connection signal="item_selected" from="UI/Left/Scroll/VBox/Part" to="." method="_on_part_item_selected"]
 [connection signal="pressed" from="UI/Right/Scroll/Colors/Export" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="UI/Right/Scroll/Colors/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="UI/Right/Scroll/Colors/Random" to="." method="_on_random_pressed"]
 [connection signal="pressed" from="Export/VBox/ExportFinal" to="." method="_on_export_final_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
